@@ -1,0 +1,133 @@
+<div class="container mt-5">
+  <div *ngIf="register; then loginOn else registerOn " class="register-on"></div>
+
+<!-- Template Login -->
+  <ng-template #loginOn>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <form #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm);" class="col-md-6 " >
+        <h3>Iniciar Sesión</h3>
+
+        <div class="succes" *ngIf="status == 'success'">
+          <p class="alert alert-success"> {{code ? code : null}} </p>
+        </div>
+        <div class="error" *ngIf="status == 'error'" >
+          <div class="alert alert-danger" >
+            <p>Hubieron los siguientes errores:</p>
+            <div>{{ code ? code : null }}</div>
+          </div>
+        </div>
+        <p class="form-group">
+          <input
+            class="form-control"
+            type="email"
+            placeholder="Email"
+            #email="ngModel"
+            [(ngModel)]="user.email"
+            name="email"
+            required="required"
+          />
+          <span *ngIf="!email.valid && email.touched" class="alerta">
+          El campo es obligatorio
+        </span>
+        </p>
+        <p class="form-group">
+          <input
+            class="form-control"
+            type="password"
+            placeholder="Contraseña"
+            #password="ngModel"
+            [(ngModel)]="user.password"
+            name="password"
+            required="required"
+          />
+          <span *ngIf="!password.valid && password.touched" class="alerta">
+          El campo es obligatorio
+        </span>
+        </p>
+        <input class="btn btn-success btn-block" type="submit" value="Loguear" [disabled]="!loginForm.form.valid">
+        <button class="btn btn-info btn-block" (click)="handleClick($event)">Regístrate aquí</button>
+      </form>
+    </div>
+  </ng-template>  <!-- end template Login -->
+
+<!-- Template Register -->
+  <ng-template #registerOn>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm);" class="col-md-6" >
+        <h3>Registrarse</h3>
+        <div class="succes" *ngIf="status == 'success'">
+          <p class="alert alert-success"> {{ code ? code : null }} </p>
+        </div>
+        <div class="error" *ngIf="status == 'error'">
+          <div class="alert alert-danger">
+            <p>Hubieron los siguientes errores:</p>
+            <div>{{ code.email ? code.email : null }}</div>
+            <div>{{ code.name ? code.name : null }}</div>
+            <div>{{ code.surname ? code.surname : null }}</div>
+            <div>{{ code.password ? code.password : null}}</div>
+          </div>
+        </div>
+        <p class="form-group">
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Nombre"
+            #name="ngModel"
+            [(ngModel)]="user.name"
+            name="name"
+            required="required"
+          />
+          <span *ngIf="!name.valid && name.touched" class="alerta">
+          El campo es obligatorio
+        </span>
+        </p>
+        <p class="form-group">
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Apellidos"
+            #surname="ngModel"
+            [(ngModel)]="user.surname"
+            name="name"
+            required="required"
+          />
+          <span *ngIf="!surname.valid && surname.touched" class="alerta">
+          El campo es obligatorio
+        </span>
+        </p>
+        <p class="form-group">
+          <input
+            class="form-control"
+            type="email"
+            placeholder="Email"
+            #email="ngModel"
+            [(ngModel)]="user.email"
+            name="email"
+            required="required"
+          />
+          <span *ngIf="!email.valid && email.touched" class="alerta">
+          El campo es obligatorio
+        </span>
+        </p>
+        <p class="form-group">
+          <input
+            class="form-control"
+            type="password"
+            placeholder="Contraseña"
+            #password="ngModel"
+            [(ngModel)]="user.password"
+            name="password"
+            required="required"
+          />
+          <span *ngIf="!password.valid && password.touched" class="alerta">
+          El campo es obligatorio
+        </span>
+        </p>
+        <input class="btn btn-success btn-block" type="submit" value="Registrar">
+        <button class="btn btn-info btn-block" (click)="handleClick($event)">Logueate aquí</button>
+      </form>
+    </div>
+  </ng-template> <!-- end template Register -->
+</div>

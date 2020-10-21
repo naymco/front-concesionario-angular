@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>{{title}}</h2>
+
+  <div class="alert alert-success" *ngIf="status_car == 'success'">
+   <p> {{ message ? message : null }}</p>
+  </div>
+
+  <div class="alert alert-danger" *ngIf="status_car == 'error'">
+    Hubieron los siguientes errores:
+    <div>{{ message ? message.name : null }}</div>
+    <div>{{ message ? message.brand : null }}</div>
+    <div>{{ message ? message.model : null }}</div>
+    <div>{{ message ? message.description : null }}</div>
+    <div>{{ message ? message.price : null }}</div>
+    <div>{{ message ? message.status : null }}</div>
+  </div>
+
+<div class="row">
+  <div class="col-md-3"></div>
+  <form #newCar class="col-md-6" (ngSubmit)="sendData(newCar);">
+      <div class="form-group">
+        <label for="name">Nombre del vehículo completo</label>
+        <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="car.name" required="required">
+        <small *ngIf="!name.valid && name.touched" class="form-text text-muted text-danger">El campo es obligatorio.</small>
+      </div>
+      <div class="form-group">
+        <label for="brand">Marca</label>
+        <input type="text" class="form-control" name="brand" #brand="ngModel" [(ngModel)]="car.brand" required="required">
+        <small *ngIf="!brand.valid && brand.touched" class="form-text text-muted text-danger">El campo es obligatorio.</small>
+      </div>
+      <div class="form-group">
+        <label for="model">Modelo</label>
+        <input type="text" class="form-control" name="model" #model="ngModel" [(ngModel)]="car.model" required="required">
+        <small *ngIf="!model.valid && model.touched" class="form-text text-muted text-danger">El campo es obligatorio.</small>
+      </div>
+      <div class="form-group">
+        <label for="image">Imagen</label>
+        <input type="text" class="form-control" name="image" #image="ngModel" [(ngModel)]="car.image" required="required">
+        <small *ngIf="!image.valid && image.touched"  class="form-text text-muted text-danger">El campo es obligatorio.</small>
+      </div>
+      <div class="form-group">
+        <label for="description">Descripción</label>
+        <textarea class="form-control" name="description" cols="30" rows="10"  #description="ngModel" [(ngModel)]="car.description" required="required"></textarea>
+        <small *ngIf="!description.valid && description.touched"  class="form-text text-muted text-danger">El campo es obligatorio.</small>
+      </div>
+      <div class="form-group">
+        <label for="price">Precio</label>
+        <input type="number" class="form-control" name="price" #price="ngModel" [(ngModel)]="car.price" required="required">
+        <small *ngIf="!price.valid && price.touched" class="form-text text-muted text-danger">El campo es obligatorio.</small>
+      </div>
+      <div class="form-group">
+        <label for="status">Estado del vehículo</label>
+        <select class="form-control" name="status"  #status="ngModel" [(ngModel)]="car.status">
+          <option value=true >En venta</option>
+          <option value=false>Almacén</option>
+        </select>
+      </div>
+    <input type="submit" value="Guardar" class="btn btn-block btn-success mb-5">
+
+  </form>
+</div>
+
+</div>

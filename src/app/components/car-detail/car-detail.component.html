@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>{{title_detail}}</h2>
+  <div *ngIf="!car">
+    Cargando...
+  </div>
+  <div *ngIf="car">
+    <div class="card mb-3">
+      <img src="{{car.image}}" class="card-img-top" alt="{{car.name}}">
+      <div class="card-body">
+        <h5 class="card-title">Marca: {{car.brand}}</h5>
+        <p class="card-text">Modelo: {{car.model}} </p>
+        <p class="card-text">Descripción: {{car.description}}</p>
+        <p class="card-text"><small class="text-muted">Precio {{car.price}}</small></p>
+        <p class="card-text"><small class="text-muted" *ngIf="car.status == 'true'">Estado: En venta</small></p>
+        <p class="card-text"><small class="text-muted" *ngIf="car.status == 'false' ">Estado: En almacén</small></p>
+      </div>
+    </div>
+
+  </div>
+</div>

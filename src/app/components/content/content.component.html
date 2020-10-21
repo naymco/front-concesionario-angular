@@ -1,0 +1,20 @@
+<div  class="container">
+  <h2 class="m-2">{{title_list}}</h2>
+  <div class="cargando" *ngIf="!cars">
+    Cargando...
+  </div>
+  <div *ngIf="cars">
+    <div class="card mb-3" *ngFor="let car of cars" >
+      <img src="{{car.image}}" class="card-img-top" alt="{{car.name}}">
+      <div class="card-body">
+        <h5 class="card-title">{{car.name}}</h5>
+        <p class="card-text"> {{car.description}} </p>
+        <p class="card-text"><small class="text-muted">Precio: {{car.price}} </small></p>
+        <div class="d-flex justify-content-between">
+          <a [routerLink]="[ '/car/detail', car.id]" class="btn btn-info" >Detalle</a>
+          <a [routerLink]="['/car/edit', car.id]" class="btn btn-success">Editar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
