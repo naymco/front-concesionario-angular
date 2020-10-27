@@ -20,7 +20,8 @@ export class CarService {
     return this._http.post(this.url + '/car/create', car, {headers:{
         'Content-type': 'application/json',
         'Authorization': 'Bearer ' + token
-      }  });
+      }
+    });
   }
 
   carList(): Observable<any> {
@@ -30,6 +31,7 @@ export class CarService {
         'Authorization': 'Bearer ' + this.token
       }
     });
+
   }
 
   carDetails(id): Observable<any>{
@@ -49,4 +51,14 @@ export class CarService {
       }
     })
   }
+
+  carDelete(id): Observable<any> {
+    return this._http.delete(this.url + '/car/destroy/' + id, {
+      headers:{
+        'Content-type': 'application/json',
+        'Authorization': 'Bearer ' + this.token
+      }
+    })
+  }
+
 }

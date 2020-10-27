@@ -4,15 +4,16 @@
     Cargando...
   </div>
   <div *ngIf="cars">
-    <div class="card mb-3" *ngFor="let car of cars" >
+    <div class="card mb-3" *ngFor="let car of cars " >
       <img src="{{car.image}}" class="card-img-top" alt="{{car.name}}">
       <div class="card-body">
         <h5 class="card-title">{{car.name}}</h5>
         <p class="card-text"> {{car.description}} </p>
         <p class="card-text"><small class="text-muted">Precio: {{car.price}} </small></p>
-        <div class="d-flex justify-content-between">
-          <a [routerLink]="[ '/car/detail', car.id]" class="btn btn-info" >Detalle</a>
-          <a [routerLink]="['/car/edit', car.id]" class="btn btn-success">Editar</a>
+        <div class="d-flex justify-content-end">
+          <a [routerLink]="[ '/car/detail', car.id]" class="btn btn-info ml-2" >Detalle</a>
+          <a [routerLink]="['/car/edit', car.id]" class="btn btn-success ml-2">Editar</a>
+          <button (click)="destroyCar(car.id)" class="btn btn-danger ml-2">Borrar</button>
         </div>
       </div>
     </div>

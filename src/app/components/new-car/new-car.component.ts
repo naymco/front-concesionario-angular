@@ -46,12 +46,17 @@ export class NewCarComponent implements OnInit {
           this.status_car = 'success';
           this.car = response.car;
           this.message = response.message;
+          this._router.navigate(['/']);
         } else {
           this.status_car = 'error'
         }
       },
       error => {
           console.log(error);
+        if( error.error.message === 'Token expirado'){
+          localStorage.clear();
+          this._router.navigate(['/login']);
+        }
           this.status_car = 'error';
           this.message = error.error.message;
       });

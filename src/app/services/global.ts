@@ -1,3 +1,3 @@
 export const GLOBAL = {
-  url: "http://api-concesionarios.com.devel/api"
-}
+  url: 'http://api-concesionarios.com.devel/api'
+};
